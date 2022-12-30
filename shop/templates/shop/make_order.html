@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <div class="kozepre keretes">
     <h1>Rendelés</h1>
     <form method="POST" class="product-form" action="" accept-charset="utf-8" enctype="multipart/form-data">{% csrf_token %}
@@ -9,5 +11,6 @@
         <button type="submit" class="save btn btn-primary">Rendelés</button>
     </form>
 </div>
+{% endif %}
 
 {% endblock %}
