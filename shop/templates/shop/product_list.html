@@ -1,0 +1,19 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+
+    {% for product in products %}
+
+    <div class="card text-bg-secondary mb-3 product" style="max-width: 18rem;">
+        <img src="{{product.product_image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{product.product_name}}</h5>
+          <p class="card-text">{{product.price}} Ft</p>
+          <a href="{% url 'product_detail' pk=product.pk %}" class="btn btn-primary">Több információ</a>
+        </div>
+    </div>
+        
+    {% endfor %}
+
+{% endblock %}

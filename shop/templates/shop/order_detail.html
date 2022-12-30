@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+{% if user.is_superuser %}
+    <div class="card text-bg-secondary mb-3 informacio kozepre" >
+        <div class="card-body">
+            <h3 class="card-title">Rendelés azonosítója: {{order.pk}}</h3>
+            <p class="card-text">Rendelt termék: {{order.item}}</p>
+            <hr>
+            <p class="card-text">Rendelő felhasználóneve: {{order.user_name}}</p>
+            <p class="card-text">Rendelő neve: {{order.first_name}} {{order.last_name}}</p>
+            <p class="card-text">Telefonszáma: {{order.phone_number}}</p>
+            <p class="card-text">E-mail címe: {{order.email}}</p>
+            <p class="card-text">Ország: {{order.country}}</p>
+            <p class="card-text">Irányítószám: {{order.postal_code}}</p>
+            <p class="card-text">Város: {{order.city}}</p>
+            <p class="card-text">Utca: {{order.street}}</p>
+            {% if order.is_paid %}
+                <p class="card-text">Fizetve: Igen</p>
+            {% else %}
+                <p class="card-text">Fizetve: Nem</p>
+            {% endif %}
+            
+            <p class="card-text">Fizetési mód: {{order.payment}}</p>
+            <p class="card-text">Szállítási mód: {{order.delivery}}</p>
+            {% if order.is_delivered %}
+                <p class="card-text">Kiszállítva: Igen</p>
+            {% else %}
+                <p class="card-text">Kiszállítva: Nem</p>
+            {% endif %}
+            <p class="card-text">Rendelés időpontja: {{order.order_time}}</p>
+            <p class="card-text">Megjegyzés: <br> {{order.comment|linebreaksbr}}</p>
+            <a class="btn btn-primary" href="{% url 'order_edit' pk=order.pk %}">Szerkesztés</a>
+
+          </div>
+    </div>
+{% endif %}
+{% endblock %}

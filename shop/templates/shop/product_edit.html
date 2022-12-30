@@ -1,0 +1,12 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+    <div class="kozepre keretes" style="width: 50%;">
+        <h1>Új termkék felvétele vagy szerkesztése</h1>
+        <form method="POST" class="product-form" action="" accept-charset="utf-8" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-primary">Mentés</button>
+            <button class="btn btn-default btn-danger" name="delete" type="submit">Törlés</button>
+        </form>
+    </div>
+{% endblock %}

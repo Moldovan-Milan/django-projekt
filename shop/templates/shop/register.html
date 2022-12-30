@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="kozepre keretes" style="width: 50%;">
+        <h1>Regisztrálás</h1>
+        <form method="POST">{% csrf_token %}
+            {{ register_form|crispy }}                    
+            <button class="btn btn-primary" type="submit" style="margin-top: 10px;">Regisztrálás</button>
+        </form>
+        <p class="text-center">Ha van már fiókod: <a class="linkek" href="/login">bejelentkezés</a></p>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <span class="alert"><li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li></span>
+            {% endfor %}
+        </ul>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}
